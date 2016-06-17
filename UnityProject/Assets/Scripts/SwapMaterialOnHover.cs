@@ -13,12 +13,10 @@ public class SwapMaterialOnHover : MonoBehaviour {
 
   void OnMouseEnter(){
     GetComponent<Renderer>().material = hover_mat;
-    Debug.Log("Enter");
   }
 
   void OnMouseExit(){
     GetComponent<Renderer>().material = orig_mat;
-    Debug.Log("Exit");
   }
 
 }
