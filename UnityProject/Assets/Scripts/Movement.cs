@@ -22,17 +22,26 @@ public class Movement : MonoBehaviour {
   // Update is called once per frame
   void Update () {
 
+    float r = Input.GetAxis("Roll KB&M");
+    if(r == 0){ r = Input.GetAxis("Roll Joystick");}
+    float p = Input.GetAxis("Pitch KB&M");
+    if(p == 0){ p = Input.GetAxis("Pitch Joystick");}
+    float y = Input.GetAxis("Yaw KB&M");
+    if(y == 0){ y = Input.GetAxis("Yaw Joystick");}
+    float t = Input.GetAxis("Thrust KB&M");
+    if(t == 0){ t = Input.GetAxis("Thrust Joystick");}
+
     ShipThrust = Mathf.Min(
       ShipThrustMax,
       Mathf.Max(
         -ShipThrustMax,
-        ShipThrust + Input.GetAxis("Thrust")
+        ShipThrust + t
       )
     );
 
-    transform.Rotate(Vector3.forward*Time.deltaTime*-Input.GetAxis("Roll")*RollSpeed);
-    transform.Rotate(Vector3.right*Time.deltaTime*Input.GetAxis("Pitch")*PitchSpeed);
-    transform.Rotate(Vector3.up*Time.deltaTime*Input.GetAxis("Yaw")*YawSpeed);
+    transform.Rotate(Vector3.forward*Time.deltaTime*r*RollSpeed);
+    transform.Rotate(Vector3.right*Time.deltaTime*p*PitchSpeed);
+    transform.Rotate(Vector3.up*Time.deltaTime*y*YawSpeed);
 
     if(Input.GetButton("Halt")){
       ShipThrust = 0;
