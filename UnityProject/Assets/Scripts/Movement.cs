@@ -13,10 +13,13 @@ public class Movement : MonoBehaviour {
   public float PitchSpeed;
   public float YawSpeed;
 
+  public GameObject missile;
+
+  private float reload = 0;
+
   // Use this for initialization
   void Start () {
     RB = GetComponent<Rigidbody>();
-    //ShipThrust = 0;
   }
 
   // Update is called once per frame
@@ -42,6 +45,17 @@ public class Movement : MonoBehaviour {
     transform.Rotate(Vector3.forward*Time.deltaTime*r*RollSpeed);
     transform.Rotate(Vector3.right*Time.deltaTime*p*PitchSpeed);
     transform.Rotate(Vector3.up*Time.deltaTime*y*YawSpeed);
+
+    reload -= Time.deltaTime;
+    if(Input.GetButton("Shoot") && reload < 0 ){
+      reload = 0.1F;
+      Debug.Log("shoot");
+      GameObject tempmis = (GameObject) Instantiate(missile, transform.position, transform.rotation);
+      Vector3 temp = transform.position + transform.forward*10;
+      tempmis.transform.position = temp;
+      Rigidbody tempbody = tempmis.GetComponent<Rigidbody>();
+      tempbody.velocity = RB.velocity + transform.forward * 100;
+    }
 
     if(Input.GetButton("Halt")){
       ShipThrust = 0;
