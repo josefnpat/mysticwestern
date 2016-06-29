@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour {
     ShipThrust = Mathf.Min(
       ShipThrustMax,
       Mathf.Max(
-        -ShipThrustMax,
+        0,
         ShipThrust + t
       )
     );
@@ -95,7 +95,7 @@ public class Movement : MonoBehaviour {
     cameras.transform.localRotation = newrot;
 
     reload -= Time.deltaTime;
-    if(Input.GetButton("Shoot") && reload < 0 ){
+    if((Input.GetButton("Shoot KB&M") || Input.GetButton("Shoot Joystick")) && reload < 0 ){
       reload = 0.1F;
       Debug.Log("shoot");
       GameObject tempmis = (GameObject) Instantiate(missile, transform.position, transform.rotation);
@@ -105,7 +105,7 @@ public class Movement : MonoBehaviour {
       tempbody.velocity = RB.velocity + transform.forward * 100;
     }
 
-    if(Input.GetButton("Halt")){
+    if( t == 0 ){
       ShipThrust = 0;
       Vector3 tempv = RB.velocity;//*=0.9F;
       float Change = ShipThrustMax*Time.deltaTime;
