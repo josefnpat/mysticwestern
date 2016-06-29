@@ -17,6 +17,11 @@ public class Movement : MonoBehaviour {
 
   private float reload = 0;
 
+  public GameObject cameras;
+  public float camera_max_roll;
+  public float camera_max_pitch;
+  public float camera_max_yaw;
+
   // Use this for initialization
   void Start () {
     RB = GetComponent<Rigidbody>();
@@ -42,9 +47,52 @@ public class Movement : MonoBehaviour {
       )
     );
 
+    // Rotate ship
     transform.Rotate(Vector3.forward*Time.deltaTime*r*RollSpeed);
     transform.Rotate(Vector3.right*Time.deltaTime*p*PitchSpeed);
     transform.Rotate(Vector3.up*Time.deltaTime*y*YawSpeed);
+
+    Quaternion newrot = cameras.transform.localRotation;
+
+    // HACK COPY PASTE: Rotate camera
+    if( r == 0 ){
+      // return to zero
+      if(newrot.z != 0){
+        newrot.z -= Mathf.Sign(newrot.z)*Time.deltaTime;
+      }
+      if(Mathf.Abs(newrot.z) < Time.deltaTime){
+        newrot.z = 0;
+      }
+    } else {
+      newrot.z -= Time.deltaTime*r;
+      newrot.z = Mathf.Min(camera_max_roll,Mathf.Max(-camera_max_roll,newrot.z));
+    }
+    if( p == 0 ){
+      // return to zero
+      if(newrot.x != 0){
+        newrot.x -= Mathf.Sign(newrot.x)*Time.deltaTime;
+      }
+      if(Mathf.Abs(newrot.x) < Time.deltaTime){
+        newrot.x = 0;
+      }
+    } else {
+      newrot.x -= Time.deltaTime*p;
+      newrot.x = Mathf.Min(camera_max_pitch,Mathf.Max(-camera_max_pitch,newrot.x));
+    }
+    if( y == 0 ){
+      // return to zero
+      if(newrot.y != 0){
+        newrot.y -= Mathf.Sign(newrot.y)*Time.deltaTime;
+      }
+      if(Mathf.Abs(newrot.y) < Time.deltaTime){
+        newrot.y = 0;
+      }
+    } else {
+      newrot.y -= Time.deltaTime*y;
+      newrot.y = Mathf.Min(camera_max_yaw,Mathf.Max(-camera_max_yaw,newrot.y));
+    }
+
+    cameras.transform.localRotation = newrot;
 
     reload -= Time.deltaTime;
     if(Input.GetButton("Shoot") && reload < 0 ){

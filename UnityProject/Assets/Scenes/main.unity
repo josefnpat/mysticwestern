@@ -216,7 +216,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 915399284}
-  - {fileID: 1443591584}
+  - {fileID: 2142137495}
   - {fileID: 1036663885}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -238,6 +238,10 @@ MonoBehaviour:
   PitchSpeed: 75
   YawSpeed: 75
   missile: {fileID: 1000010861431416, guid: 3feef2200812043d78dfa893488e347b, type: 2}
+  cameras: {fileID: 2142137494}
+  camera_max_roll: 0.25
+  camera_max_pitch: 0.25
+  camera_max_yaw: 0.25
 --- !u!114 &50857751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,7 +880,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 915399283}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 3.3900003, z: -16.55}
+  m_LocalPosition: {x: -0, y: 3.3900003, z: -16.550005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 50857749}
@@ -1499,11 +1503,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1443591579}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 3.39, z: -16.55}
+  m_LocalPosition: {x: 0, y: 3.3900003, z: -16.550005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 50857749}
-  m_RootOrder: 1
+  m_Father: {fileID: 2142137495}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1573886719
 GameObject:
@@ -2317,3 +2321,32 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ca15bb93f1c8941b2a1309c41562715e, type: 3}
   m_PrefabInternal: {fileID: 60365278}
+--- !u!1 &2142137494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2142137495}
+  m_Layer: 0
+  m_Name: Cameras
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2142137495
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2142137494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1443591584}
+  m_Father: {fileID: 50857749}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
