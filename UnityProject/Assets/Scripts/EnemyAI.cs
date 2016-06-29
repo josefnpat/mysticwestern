@@ -36,7 +36,7 @@ public class EnemyAI : MonoBehaviour {
     if( pdist < 100 || sdist < 100){
 
       if( reload < 0 ){
-        reload = 0.1F;
+        reload = 0.5F;
         Debug.Log("shoot");
         GameObject tempmis = (GameObject) Instantiate(missile, transform.position, transform.rotation);
         Vector3 temp = transform.position + transform.forward*10;
