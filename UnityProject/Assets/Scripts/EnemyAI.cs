@@ -37,15 +37,14 @@ public class EnemyAI : MonoBehaviour {
 
       if( reload < 0 ){
         reload = 0.5F;
-        Debug.Log("shoot");
         GameObject tempmis = (GameObject) Instantiate(missile, transform.position, transform.rotation);
+        tempmis.GetComponent<MissileFade>().owned_by_player = false;
         Vector3 temp = transform.position + transform.forward*10;
         tempmis.transform.position = temp;
         Rigidbody tempbody = tempmis.GetComponent<Rigidbody>();
         tempbody.velocity = RB.velocity + transform.forward * 100;
       }
 
-      Debug.Log("Shooting you!");
     }
 
 	}

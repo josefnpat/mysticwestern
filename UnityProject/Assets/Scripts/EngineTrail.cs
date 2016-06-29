@@ -16,6 +16,7 @@ public class EngineTrail : MonoBehaviour {
     if(next < 0){
       next = 1;
       GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+      cube.GetComponent<Collider>().enabled = false;
       Vector3 temp = transform.position - transform.forward*10;
       cube.transform.position = temp;
       cube.transform.rotation = Random.rotation;

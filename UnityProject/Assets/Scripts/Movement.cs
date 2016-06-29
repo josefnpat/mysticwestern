@@ -97,7 +97,6 @@ public class Movement : MonoBehaviour {
     reload -= Time.deltaTime;
     if((Input.GetButton("Shoot KB&M") || Input.GetAxis("Shoot Joystick") != 0) && reload < 0 ){
       reload = 0.1F;
-      Debug.Log("shoot");
       GameObject tempmis = (GameObject) Instantiate(missile, transform.position, transform.rotation);
       Vector3 temp = transform.position + transform.forward*10;
       tempmis.transform.position = temp;

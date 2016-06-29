@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000010223689330}
   - 54: {fileID: 54000012087138986}
   - 114: {fileID: 114000011863845284}
+  - 135: {fileID: 135000013956454248}
   m_Layer: 0
   m_Name: EnemyScarab
   m_TagString: Untagged
@@ -137,3 +138,15 @@ MonoBehaviour:
   player: {fileID: 0}
   station: {fileID: 0}
   missile: {fileID: 1000010861431416, guid: 3feef2200812043d78dfa893488e347b, type: 2}
+--- !u!135 &135000013956454248
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010239688768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

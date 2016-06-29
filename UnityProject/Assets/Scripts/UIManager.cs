@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour {
     shield = Mathf.Min(1,shield+Time.deltaTime);
     shield_bar.transform.localScale = new Vector3(shield*shield_max_scale,shield*shield_max_scale,shield_max_scale);
 
-    energy_bar_text.text = "Energy: "+Mathf.Floor(energy*100)+"%";
+    energy_bar_text.text = "Station: "+Mathf.Floor(energy*100)+"%";
     energy_bar.transform.localScale = new Vector3(energy*5,1,0.1F);
     energy = Mathf.Min(1,energy+Time.deltaTime);
 
