@@ -3,17 +3,6 @@ using System.Collections;
 
 public class UIManager : MonoBehaviour {
 
-  /*
-  public string dialog_name;
-  public string dialog_text;
-  public string dialog_audio;
-  public string dialog_yes;
-  public string dialog_yes_action;
-  public string dialog_no;
-  public string dialog_no_action;
-  public GameObject dialog_face;
-  */
-
   public GameObject dialog_ui;
   public bool show = false;
   private float show_scale = 0;
@@ -41,7 +30,6 @@ public class UIManager : MonoBehaviour {
   public float energy = 0;
   public GameObject energy_bar;
   public TextMesh energy_bar_text;
-
 
   // Use this for initialization
   void Start () {
@@ -78,6 +66,10 @@ public class UIManager : MonoBehaviour {
           Mathf.Min(text_dialog_cache.Length,(int)Mathf.Floor(text_dt*text_speed))),
         56
       );
+
+    if(text_dialog_cache.Length + 25 < (int)Mathf.Floor(text_dt*text_speed)){
+      show = false;
+    }
 
     if(show){
       text_dt = text_dt + Time.deltaTime;
