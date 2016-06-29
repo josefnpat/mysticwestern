@@ -83,5 +83,9 @@ public class Movement : MonoBehaviour {
       RB.velocity = tempv;
     }
 
+    if(RB.velocity.magnitude > 100){
+      RB.velocity = RB.velocity.normalized * 100;
+    }
+
   }
 }

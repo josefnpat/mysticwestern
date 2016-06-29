@@ -58,9 +58,6 @@ public class UIManager : MonoBehaviour {
   // Update is called once per frame
   void Update () {
 
-/*
-    health_bar.transform.localScale = new Vector3(health*10,1,0.1F);
-*/
     health_bar_text.text = "Integrity: "+Mathf.Floor(health*100)+"%";
     health = Mathf.Min(1,health+Time.deltaTime);
     health_bar.transform.localScale = new Vector3(health*health_max_scale,health*health_max_scale,health_max_scale);
@@ -68,10 +65,6 @@ public class UIManager : MonoBehaviour {
     shield_bar_text.text = "Shield: "+Mathf.Floor(shield*100)+"%";
     shield = Mathf.Min(1,shield+Time.deltaTime);
     shield_bar.transform.localScale = new Vector3(shield*shield_max_scale,shield*shield_max_scale,shield_max_scale);
-
-/*
-    shield_bar.transform.localScale = new Vector3(shield*10,1,0.1F);
-    */
 
     energy_bar_text.text = "Energy: "+Mathf.Floor(energy*100)+"%";
     energy_bar.transform.localScale = new Vector3(energy*5,1,0.1F);
