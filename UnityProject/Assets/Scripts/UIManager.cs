@@ -31,10 +31,12 @@ public class UIManager : MonoBehaviour {
   public float health = 0;
   public GameObject health_bar;
   public TextMesh health_bar_text;
+  private float health_max_scale;
 
   public float shield = 0;
   public GameObject shield_bar;
   public TextMesh shield_bar_text;
+  private float shield_max_scale;
 
   public float energy = 0;
   public GameObject energy_bar;
@@ -49,21 +51,30 @@ public class UIManager : MonoBehaviour {
       "You Betcha!",
       "No Way!"
     );
+    shield_max_scale = shield_bar.transform.localScale.x;
+    health_max_scale = health_bar.transform.localScale.x;
   }
 
   // Update is called once per frame
   void Update () {
 
-    health_bar_text.text = "Integrity: "+Mathf.Floor(health*100)+"%";
+/*
     health_bar.transform.localScale = new Vector3(health*10,1,0.1F);
+*/
+    health_bar_text.text = "Integrity: "+Mathf.Floor(health*100)+"%";
     health = Mathf.Min(1,health+Time.deltaTime);
+    health_bar.transform.localScale = new Vector3(health*health_max_scale,health*health_max_scale,health_max_scale);
 
     shield_bar_text.text = "Shield: "+Mathf.Floor(shield*100)+"%";
-    shield_bar.transform.localScale = new Vector3(shield*10,1,0.1F);
     shield = Mathf.Min(1,shield+Time.deltaTime);
+    shield_bar.transform.localScale = new Vector3(shield*shield_max_scale,shield*shield_max_scale,shield_max_scale);
+
+/*
+    shield_bar.transform.localScale = new Vector3(shield*10,1,0.1F);
+    */
 
     energy_bar_text.text = "Energy: "+Mathf.Floor(energy*100)+"%";
-    energy_bar.transform.localScale = new Vector3(energy*10,1,0.1F);
+    energy_bar.transform.localScale = new Vector3(energy*5,1,0.1F);
     energy = Mathf.Min(1,energy+Time.deltaTime);
 
     target_dialog.text =
