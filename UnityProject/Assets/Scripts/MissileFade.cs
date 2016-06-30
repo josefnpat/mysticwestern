@@ -19,7 +19,6 @@ public class MissileFade : MonoBehaviour {
         Destroy(gameObject);//TODO HP
         UI.GetComponent<UIManager>().score++;
         for (int i = 1; i<= 100; i++){
-          Debug.Log("wat");
           GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
           cube.GetComponent<Collider>().enabled = false;
           cube.transform.rotation = Random.rotation;

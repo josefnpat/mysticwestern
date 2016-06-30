@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
@@ -83,6 +84,17 @@ public class UIManager : MonoBehaviour {
       show_scale = Mathf.Max(0,show_scale-Time.deltaTime*show_speed);
     }
     dialog_ui.transform.localScale = new Vector3(show_scale,show_scale,show_scale);
+
+    if(health <= 0 || energy <= 0){
+      PlayerPrefs.SetString("LastScore",score.ToString());
+      if( int.Parse(PlayerPrefs.GetString("TopScore","0"))  < score){
+        PlayerPrefs.SetString("TopScore",score.ToString());
+      }
+      PlayerPrefs.Save();
+      SceneManager.LoadScene("game over");
+    }
+
+
   }
 
   void SetDialog( string character, string text, string yes, string no){
