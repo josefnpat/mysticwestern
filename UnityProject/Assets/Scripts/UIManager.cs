@@ -47,16 +47,16 @@ public class UIManager : MonoBehaviour {
   void Update () {
 
     health_bar_text.text = "Integrity: "+Mathf.Floor(health*100)+"%";
-    health = Mathf.Min(1,health+Time.deltaTime);
+    //health = Mathf.Min(1,health+Time.deltaTime);
     health_bar.transform.localScale = new Vector3(health*health_max_scale,health*health_max_scale,health_max_scale);
 
     shield_bar_text.text = "Shield: "+Mathf.Floor(shield*100)+"%";
-    shield = Mathf.Min(1,shield+Time.deltaTime);
+    shield = Mathf.Min(1,shield+Time.deltaTime/8);
     shield_bar.transform.localScale = new Vector3(shield*shield_max_scale,shield*shield_max_scale,shield_max_scale);
 
     energy_bar_text.text = "Station: "+Mathf.Floor(energy*100)+"%";
     energy_bar.transform.localScale = new Vector3(energy*5,1,0.1F);
-    energy = Mathf.Min(1,energy+Time.deltaTime);
+    //energy = Mathf.Min(1,energy+Time.deltaTime);
 
     target_dialog.text =
       text_character_cache+":\n"+

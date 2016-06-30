@@ -12,6 +12,8 @@ public class EnemyAI : MonoBehaviour {
 
   private float reload = 0;
 
+  public GameObject UI;
+
 	void Start () {
     RB = GetComponent<Rigidbody>();
 	}
@@ -38,6 +40,7 @@ public class EnemyAI : MonoBehaviour {
       if( reload < 0 ){
         reload = 0.5F;
         GameObject tempmis = (GameObject) Instantiate(missile, transform.position, transform.rotation);
+        tempmis.GetComponent<MissileFade>().UI = UI;
         tempmis.GetComponent<MissileFade>().owned_by_player = false;
         Vector3 temp = transform.position + transform.forward*10;
         tempmis.transform.position = temp;

@@ -5,6 +5,7 @@ public class MissileFade : MonoBehaviour {
 
   private float killme = 3;
   public bool owned_by_player = true;
+  public GameObject UI;
 
 	// Use this for initialization
 	void Start () {
@@ -20,15 +21,25 @@ public class MissileFade : MonoBehaviour {
       Debug.Log("enemy hit!");
     } else if(other.tag == "Player"){
       if(!owned_by_player){
-        Debug.Log("player hit!");
+        UI.GetComponent<UIManager>().shield -= 0.05F;
+        if(UI.GetComponent<UIManager>().shield < 0){
+          UI.GetComponent<UIManager>().health = Mathf.Max(
+            0,
+            UI.GetComponent<UIManager>().health + UI.GetComponent<UIManager>().shield
+          );
+          UI.GetComponent<UIManager>().shield = 0;
+        }
         Destroy(gameObject);
-        //TODO
+        //TODO LOSE
       }
     } else if(other.tag == "Station") {
       if(!owned_by_player){
-        Debug.Log("station hit!");
-        Destroy(other.gameObject);
-        //TODO
+        Destroy(gameObject);
+        //TODO LOSE
+        UI.GetComponent<UIManager>().energy = Mathf.Max(
+          0,
+          UI.GetComponent<UIManager>().energy - 0.0125F
+        );
       }
     }
     Debug.Log(other.tag+" hit");

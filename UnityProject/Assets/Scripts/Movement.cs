@@ -22,6 +22,8 @@ public class Movement : MonoBehaviour {
   public float camera_max_pitch;
   public float camera_max_yaw;
 
+  public GameObject UI;
+
   // Use this for initialization
   void Start () {
     RB = GetComponent<Rigidbody>();
@@ -98,6 +100,7 @@ public class Movement : MonoBehaviour {
     if((Input.GetButton("Shoot KB&M") || Input.GetAxis("Shoot Joystick") != 0) && reload < 0 ){
       reload = 0.1F;
       GameObject tempmis = (GameObject) Instantiate(missile, transform.position, transform.rotation);
+      tempmis.GetComponent<MissileFade>().UI = UI;
       Vector3 temp = transform.position + transform.forward*10;
       tempmis.transform.position = temp;
       Rigidbody tempbody = tempmis.GetComponent<Rigidbody>();
