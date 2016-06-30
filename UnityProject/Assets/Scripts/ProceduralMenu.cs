@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ProceduralMenu : MonoBehaviour {
 	public GameObject[] MenuItems;
+	public string[] MenuScenes;
+	
 	public Vector3 Origin;
 	public Vector3 Distance;
 	public Vector3 Rotation;
@@ -10,8 +12,10 @@ public class ProceduralMenu : MonoBehaviour {
 	public Material DefaultMaterial;
 	public Material SelectedMaterial;
 	
+	
+	
 	bool oldPressed = false;
-	int SelectedItem = 1;
+	int SelectedItem = 0;
 	
 	// Use this for initialization
 	void Start () {
@@ -39,6 +43,16 @@ public class ProceduralMenu : MonoBehaviour {
 				oldPressed = true;
 			} else {
 				oldPressed = false;
+			}
+			
+			if (Input.GetButton("Submit")) {
+				if (MenuScenes[SelectedItem] == "quit")
+				{
+          Debug.Log("Goodbye xbox cowboy");
+					Application.Quit();
+				} else {
+					Application.LoadLevel(MenuScenes[SelectedItem]);
+				}
 			}
 	}
 	
