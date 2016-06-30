@@ -8,11 +8,11 @@ public class Director : MonoBehaviour {
   public GameObject station;
   public GameObject UI;
 
+  private float spawn = 0;
+  private float spawn_dt = 10;
+
 	// Use this for initialization
 	void Start () {
-    for (int i = 1; i <= 10; i++){
-      makeEnemy();
-    }
 	}
 
   void makeEnemy() {
@@ -28,6 +28,12 @@ public class Director : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+    spawn -= Time.deltaTime;
+    if( spawn <= 0 ){
+      spawn = spawn_dt;
+      spawn_dt = Mathf.Max(0.1F,spawn_dt - 0.05F);
+      makeEnemy();
+      Debug.Log(spawn_dt);
+    }
 	}
 }

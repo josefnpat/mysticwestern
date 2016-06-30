@@ -17,8 +17,17 @@ public class MissileFade : MonoBehaviour {
       if(owned_by_player){
         Destroy(other.gameObject);
         Destroy(gameObject);//TODO HP
+        UI.GetComponent<UIManager>().score++;
+        for (int i = 1; i<= 100; i++){
+          Debug.Log("wat");
+          GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+          cube.GetComponent<Collider>().enabled = false;
+          cube.transform.rotation = Random.rotation;
+          Vector3 temp = transform.position + Random.insideUnitSphere*Random.Range(10,20);// - transform.forward*10;
+          cube.transform.position = temp;
+          cube.AddComponent<FadeOverTime>();
+        }
       }
-      Debug.Log("enemy hit!");
     } else if(other.tag == "Player"){
       if(!owned_by_player){
         UI.GetComponent<UIManager>().shield -= 0.05F;

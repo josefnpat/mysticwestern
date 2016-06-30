@@ -31,6 +31,9 @@ public class UIManager : MonoBehaviour {
   public GameObject energy_bar;
   public TextMesh energy_bar_text;
 
+  public int score = 0;
+  public TextMesh score_text;
+
   // Use this for initialization
   void Start () {
     SetDialog(
@@ -45,6 +48,8 @@ public class UIManager : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
+
+    score_text.text = "Score: "+score;
 
     health_bar_text.text = "Integrity: "+Mathf.Floor(health*100)+"%";
     //health = Mathf.Min(1,health+Time.deltaTime);

@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-    float pdist = Vector3.Distance(transform.position,player.transform.position);
+    float pdist = Vector3.Distance(transform.position,player.transform.position)/4;
     float sdist = Vector3.Distance(transform.position,station.transform.position);
     if( pdist < sdist ){
       transform.LookAt(player.transform.position);
