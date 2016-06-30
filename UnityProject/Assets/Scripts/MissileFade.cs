@@ -38,7 +38,7 @@ public class MissileFade : MonoBehaviour {
       }
     } else if(other.tag == "Player"){
       if(!owned_by_player){
-        UI.GetComponent<UIManager>().shield -= 0.05F;
+        UI.GetComponent<UIManager>().shield -= 0.15F;
         if(UI.GetComponent<UIManager>().shield < 0){
           UI.GetComponent<UIManager>().health = Mathf.Max(
             0,
