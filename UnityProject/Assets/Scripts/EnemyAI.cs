@@ -14,6 +14,10 @@ public class EnemyAI : MonoBehaviour {
 
   public GameObject UI;
 
+  public AudioSource death1;
+  public AudioSource death2;
+  public AudioSource sfx_station_damage;
+
 	void Start () {
     RB = GetComponent<Rigidbody>();
 	}
@@ -41,6 +45,9 @@ public class EnemyAI : MonoBehaviour {
         reload = 0.5F;
         GameObject tempmis = (GameObject) Instantiate(missile, transform.position, transform.rotation);
         tempmis.GetComponent<MissileFade>().UI = UI;
+        tempmis.GetComponent<MissileFade>().death1 = death1;
+        tempmis.GetComponent<MissileFade>().death2 = death2;
+        tempmis.GetComponent<MissileFade>().sfx_station_damage = sfx_station_damage;
         tempmis.GetComponent<MissileFade>().owned_by_player = false;
         Vector3 temp = transform.position + transform.forward*10;
         tempmis.transform.position = temp;

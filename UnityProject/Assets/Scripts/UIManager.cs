@@ -35,6 +35,11 @@ public class UIManager : MonoBehaviour {
   public int score = 0;
   public TextMesh score_text;
 
+  public AudioSource sfx_incoming_transmission;
+  public AudioSource sfx_text_beep;
+  private float int_last_text_beep;
+  public AudioSource sfx_player_death;
+
   // Use this for initialization
   void Start () {
     SetDialog(
@@ -73,6 +78,11 @@ public class UIManager : MonoBehaviour {
         56
       );
 
+    if( (int)Mathf.Floor(text_dt*text_speed) > int_last_text_beep){
+      int_last_text_beep++;
+      sfx_text_beep.Play();
+    }
+
     if(text_dialog_cache.Length + 25 < (int)Mathf.Floor(text_dt*text_speed)){
       show = false;
     }
@@ -86,6 +96,7 @@ public class UIManager : MonoBehaviour {
     dialog_ui.transform.localScale = new Vector3(show_scale,show_scale,show_scale);
 
     if(health <= 0 || energy <= 0){
+      sfx_player_death.Play();
       PlayerPrefs.SetString("LastScore",score.ToString());
       if( int.Parse(PlayerPrefs.GetString("TopScore","0"))  < score){
         PlayerPrefs.SetString("TopScore",score.ToString());
@@ -98,6 +109,8 @@ public class UIManager : MonoBehaviour {
   }
 
   void SetDialog( string character, string text, string yes, string no){
+    int_last_text_beep = 0;
+    sfx_incoming_transmission.Play();
     show = true;
     text_character_cache = character;
     text_dialog_cache = text;

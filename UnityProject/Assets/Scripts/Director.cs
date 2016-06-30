@@ -11,6 +11,10 @@ public class Director : MonoBehaviour {
   private float spawn = 0;
   private float spawn_dt = 10;
 
+  public AudioSource death1;
+  public AudioSource death2;
+  public AudioSource sfx_station_damage;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -24,6 +28,9 @@ public class Director : MonoBehaviour {
     tempep.GetComponent<EnemyAI>().player = player;
     tempep.GetComponent<EnemyAI>().station = station;
     tempep.GetComponent<EnemyAI>().UI = UI;
+    tempep.GetComponent<EnemyAI>().death1 = death1;
+    tempep.GetComponent<EnemyAI>().death2 = death2;
+    tempep.GetComponent<EnemyAI>().sfx_station_damage = sfx_station_damage;
   }
 	
 	// Update is called once per frame

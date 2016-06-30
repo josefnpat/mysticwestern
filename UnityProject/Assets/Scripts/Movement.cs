@@ -24,6 +24,11 @@ public class Movement : MonoBehaviour {
 
   public GameObject UI;
 
+  public AudioSource sfx_shoot;
+  public AudioSource sfx_death1;
+  public AudioSource sfx_death2;
+  public AudioSource sfx_engine;
+
   // Use this for initialization
   void Start () {
     RB = GetComponent<Rigidbody>();
@@ -48,6 +53,8 @@ public class Movement : MonoBehaviour {
         ShipThrust + t
       )
     );
+
+    sfx_engine.volume = Mathf.Max(0,Mathf.Min(1,ShipThrust/ShipThrustMax/2));
 
     // Rotate ship
     transform.Rotate(Vector3.forward*Time.deltaTime*r*RollSpeed);
@@ -104,8 +111,11 @@ public class Movement : MonoBehaviour {
           Input.GetAxis("Shoot Joystick Windows") != 0
         ) && reload < 0 ){
       reload = 0.1F;
+      sfx_shoot.Play();
       GameObject tempmis = (GameObject) Instantiate(missile, transform.position, transform.rotation);
       tempmis.GetComponent<MissileFade>().UI = UI;
+      tempmis.GetComponent<MissileFade>().death1 = sfx_death1;
+      tempmis.GetComponent<MissileFade>().death2 = sfx_death2;
       Vector3 temp = transform.position + transform.forward*10;
       tempmis.transform.position = temp;
       Rigidbody tempbody = tempmis.GetComponent<Rigidbody>();
