@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour {
   void Start () {
     SetDialog(
       "Clooney Cat",
-      "Howdy partner. We need you to deliver these palletes of medicine to Mars so all the good boys n' girls get better. Can ya'll handle that, boys?",
+      "We've got incoming! Don't let them destroy the station!",
       "You Betcha!",
       "No Way!"
     );

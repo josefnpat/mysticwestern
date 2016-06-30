@@ -139,6 +139,7 @@ MonoBehaviour:
   player: {fileID: 0}
   station: {fileID: 0}
   missile: {fileID: 1000010861431416, guid: 3feef2200812043d78dfa893488e347b, type: 2}
+  UI: {fileID: 0}
 --- !u!114 &114000013330712836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,7 +158,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010239688768}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.125

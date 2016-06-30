@@ -18,11 +18,7 @@ public class Director : MonoBehaviour {
   void makeEnemy() {
     GameObject tempep = (GameObject) Instantiate(
       enemy_prefab,
-      new Vector3(
-        Random.Range(-100,100),
-        Random.Range(-100,100),
-        Random.Range(-100,100)
-      ),
+      Random.insideUnitSphere * Random.Range(3000,3200),
       Random.rotation
     );
     tempep.GetComponent<EnemyAI>().player = player;
