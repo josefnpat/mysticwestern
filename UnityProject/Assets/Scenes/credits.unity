@@ -372,11 +372,11 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1750082481}
-  m_Text: "Missing Sentinel Software Presents\n\nGame Name\n\nMade for Juegos Rancheros'\nMystic
-    Western Game Jam 2016\n\nJosef Patoprsty (@josefnpat) \nProgramming, \nDesign
-    & Coordination\r\n\nAshley Hooper (@bytedesigning) \nArt & Design\r\n\nBennjamin
+  m_Text: "Missing Sentinel Software Presents\n\nOutlaws of Cygnus\n\nMade for Juegos
+    Rancheros'\nMystic Western Game Jam 2016\n\nJosef Patoprsty (@josefnpat) \nProgramming,
+    \nDesign & Coordination\r\n\nAshley Hooper (@bytedesigning) \nArt & Design\r\n\nBennjamin
     Furtado\nMusic\r\n\nRan Schonewille\nSound Effects\r\n\nArjan Oudendijk (@Arjan_vk)\nProgramming
-    & Unity3D Consultant"
+    & Unity3D Consultant\n\nMissingSentinelSoftware.com"
   m_OffsetZ: 0
   m_CharacterSize: 0.25
   m_LineSpacing: 1
